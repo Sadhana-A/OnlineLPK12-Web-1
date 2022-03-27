@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<iframe width="420" height="315"
-src="https://www.kcet.org/shows/southland-sessions/7-dance-videos-that-helped-us-get-through-2020">
-</iframe>
+
+<a href="https://docs.google.com/presentation/d/e/2PACX-1vS_nIh5NP_Om_vsEPaL-AxVF7A-EuVQusVvPw88KWZgmTEdyvBQ4PJIIAaOzjPXFKzPIlf7NsxT9Dvw/pub?start=false&loop=false&delayms=3000" target="_self">Big Buck Bunny</a>
  <%@ include file = "footer.jsp" %> 
 </body>
 </html>

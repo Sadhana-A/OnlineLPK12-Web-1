@@ -20,7 +20,6 @@
 </head>
 <body>
 <div class="footer">
-  <p>Footer</p>
   <h4>Online LPK12 Course</h4>
 </div>
 
