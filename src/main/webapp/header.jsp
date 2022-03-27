@@ -10,17 +10,18 @@
 String userName = request.getParameter("userName");
 String passWord = request.getParameter("passWord");
 %>
- <div class="row" style="border: thin solid black; padding:10px;"> 
- <div class="col-md-5">
-<img src ="logo.jpg"  height= "125" width="235" style="float:left;" />
+<div class="container pt-5 my-10 bg-primary text-white" style="width:100%">
+<div class="col-sm-4">
 </div>
- <div class="col-md-3">
-<h3 style="float:center;">Online LPK12 Course</h3> 
+
+<div class="col-sm-6">
+<h2> Welcome to Online LPK12 Course</h2>
 </div>
- <div class="col-md-3">
-<h4 style="float:right;"><%= userName %>
+
+<div class="col-sm-2">
+<h4><%= userName %> </h4>
 <br>
-<a style="float:right;" href="logout.jsp">Logout</a></h4>
+<a href="logout.jsp" class="btn btn-warning">Logout</a>
 </div>
 </div>
 

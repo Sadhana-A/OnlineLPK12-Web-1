@@ -10,22 +10,37 @@
 <%@ include file = "header.jsp" %>
 </head>
 <body>
+<div class="container pt-5">
 <div class="row">
-<div class= "col-md-4 center">
-<form action="lessonquiz.jsp">
-<input type="image" id="image" alt="Lessons" src="lessons.png"  height= "125" width="235" >
-<button onclick="lessons.jsp" style="background-color:teal">Lessons</button>
-</form>
-</div>
+<div class="col-sm-6">
+  <h2>Lessons</h2>
+  <div class="card" style="width:400px">
+  <form action="lessonnumber.jsp">
+    <img class="card-img-top" src="lessons.png" alt="lessons" style="width:100%">
+    <div class="card-body">
+      <p class="card-text">Click below to view lessons</p>
+      <a href="lessonnumber.jsp" class="btn btn-primary">Lessons</a>
+    </div>
+      </form>
+  </div>
+  </div>
 
-<div class= "col-md-4 center">
-<form action="progress.jsp">
-<input type="image" id="image" alt="Lessons" src="progress.jpg"  height= "125" width="235" >
-<button onclick="progress.jsp" style="background-color:teal">Progress</button>
-</form>
+  
+  <div class="col-sm-6">
+  <h2>Progress</h2>
+  <div class="card" style="width:400px">
+  <form action="progress.jsp">
+    <img class="card-img-top" src="progress.jpg" alt="progress" style="width:100%">
+    <div class="card-body">
+      <p class="card-text">Click below to view progress</p>
+      <a href="progress.jsp" class="btn btn-primary">Progress</a>
+    </div>
+    </form>
+  </div>
 </div>
 </div>
-
-<%-- <%@ include file = "footer.jsp" %> --%>
+</div>
+<br>
+ <%@ include file = "footer.jsp" %> 
 </body>
 </html>
