@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class controller {
 	 
 
-    public static void main(String[] args) throws JSONException {
+    public static void main(String[] args) throws IOException {
         
         try {
             getApiRequest();
@@ -23,7 +23,7 @@ public class controller {
 
     }
     
-    public static void getApiRequest() throws IOException, JSONException {
+    public static void getApiRequest() throws IOException {
         
         // Get 10th record data
     	
@@ -51,13 +51,13 @@ public class controller {
             in.close();
             // Print result in string format
             System.out.println("JSON String Data " + jsonResponseData.toString());
-            String data = jsonResponseData.toString();
-            JSONObject json = new JSONObject(data);       
+            //String data = jsonResponseData.toString();
+            //JSONObject json = new JSONObject(data);       
     
-            String status = (String) json.get("status");
+            //String status = (String) json.get("status");
            // int id = Integer.parseInt(json.getString("id"));
 
-            System.out.println( "STATUS: " + status);
+            //System.out.println( "STATUS: " + status);
             //System.out.println( "ID: " + id);
         
         } else {
