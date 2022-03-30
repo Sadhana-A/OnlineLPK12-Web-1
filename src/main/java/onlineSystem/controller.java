@@ -2,6 +2,7 @@ package onlineSystem;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -16,10 +17,14 @@ public class controller {
     public static void main(String[] args) throws IOException {
         
         try {
-            getApiRequest();
+            //getApiRequest();
+        	POSTRequest();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        
+   
 
     }
     
@@ -66,4 +71,57 @@ public class controller {
 
     }
 
+
+    
+    
+    public static void POSTRequest() throws IOException {
+
+
+
+        final String POST_PARAMS = "\r\n"
+        		+ "{\r\n"
+        		+ "\r\n"
+        		+ "    \"name\": \"morpheus\",\r\n"
+        		+ "\r\n"
+        		+ "    \"job\": \"leader\"\r\n"
+        		+ "\r\n"
+        		+ "}";
+        System.out.println(POST_PARAMS);
+        URL obj = new URL("https://reqres.in/api/users");
+        HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+        postConnection.setRequestMethod("POST");
+        postConnection.setRequestProperty("userId", "a1bcdefgh");
+        postConnection.setRequestProperty("Content-Type", "application/json");
+
+
+        postConnection.setDoOutput(true);
+        OutputStream os = postConnection.getOutputStream();
+        os.write(POST_PARAMS.getBytes());
+        os.flush();
+        os.close();
+
+
+        int responseCode = postConnection.getResponseCode();
+        System.out.println("POST Response Code :  " + responseCode);
+        System.out.println("POST Response Message : " + postConnection.getResponseMessage());
+
+        if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                postConnection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in .readLine()) != null) {
+                response.append(inputLine);
+            } in .close();
+
+            // print result
+            System.out.println(response.toString());
+        } else {
+            System.out.println("POST NOT WORKED");
+        }
+    }
+    
+    
+    
 }
