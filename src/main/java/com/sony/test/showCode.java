@@ -2,9 +2,9 @@ package com.sony.test;
 
 public class showCode {
 	
-	public static String toLower(String data) {
+	public  String check() {
 		
-		return data.toLowerCase();
+		return "hey! You are in java class";
 	}
 
 }

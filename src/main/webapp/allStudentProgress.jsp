@@ -37,6 +37,12 @@ console.log("hello");
 var response = getApiData();
 
 }
+function goToStudentProgress(id){
+	//window.Storage.setItem('studentid', String(id));
+	localStorage.setItem("studentId",  String(id));
+	window.open("studentProgress.jsp");
+	
+}
 function getApiData()
 {
 <%
@@ -73,11 +79,16 @@ let row = "";
 row += "<tr>";
 row += '<td>' + response[i].userId + '</td>';
 row += '<td>' + response[i].title + '</td>';
-row += '<td>' + "<a class='btn btn-primary' href='StudentProgressDetail.jsp' taget='_blank'> View Student Progress </a>" + '</td>';
+
+row += '<td>' + 
+
+"<button type='button' id='123' class='btn third-category-button' onclick='goToStudentProgress("+response[i].userId+");'>View error records</button>" + '</td>';
+
 row += '</tr>';
 htmlTable += row;
 }
 htmlTable += '</table>';
+
 
 $('#student-progress-table').html(htmlTable);
 }

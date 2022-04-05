@@ -1,4 +1,4 @@
-package onlineSystem;
+package com.lpk12.onlineSystem;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -86,11 +86,11 @@ public class controller {
         		+ "    \"job\": \"leader\"\r\n"
         		+ "\r\n"
         		+ "}";
-        System.out.println(POST_PARAMS);
+        System.out.println(POST_PARAMS); 
         URL obj = new URL("https://reqres.in/api/users");
         HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
         postConnection.setRequestMethod("POST");
-        postConnection.setRequestProperty("userId", "a1bcdefgh");
+        //postConnection.setRequestProperty("userId", "a1bcdefgh");
         postConnection.setRequestProperty("Content-Type", "application/json");
 
 
