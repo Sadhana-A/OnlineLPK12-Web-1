@@ -15,14 +15,10 @@ pageEncoding="ISO-8859-1"%>
 <h3>Lesson 1 Quiz</h3>
 </div>
 
-
-
 <div id="quiz-section">
 </div>
 <jsp:include page="footer.jsp"/>
 </body>
-
-
 
 <script type="text/javascript">
 window.onload = function(){

@@ -12,7 +12,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <style>
 .table-styled {
-border-collapse: collapse
+  border-collapse: collapse
 }
 </style>
 <meta charset="UTF-8">
@@ -21,16 +21,12 @@ border-collapse: collapse
 <body>
 <jsp:include page="header.jsp"/>
 <div id="student-progress-table" style="width:80%;margin:2% 10%;">
-
-
-
 </div>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>
 <script type="text/javascript">
 window.onload = function(){
-
 getApiData();
 console.log("hello");
 
