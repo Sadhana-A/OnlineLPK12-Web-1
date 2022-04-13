@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Student Progress</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <div>
 <a class="btn btn-primary" href='progress.jsp' style="margin-bottom:20px">Go To All Students Progress</a>
 </div>
-<table  class="table table-sm table-bordered table-hover" >
+<table class="table table-sm table-bordered table-hover" >
 <tr style='background-color:#275E9B;color:white'>
 <th> Lesson Number </th> <th> Lesson Name </th> <th> Lesson Progress </th> <th>Quiz Progress</th>
 </tr>
