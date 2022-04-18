@@ -15,7 +15,7 @@ String passWord = request.getParameter("passWord");
 
  <div class="col-sm-3">
   <form action="header.jsp">
-  	  <a href="#" onclick="history.back()" style="margin-top:25px"><img height="30" width="40" src="back.png" style="margin-top:25px" ></a>
+  	  <a href="#" id="goBackButton" onclick="history.back()" style="margin-top:25px"><img height="30" width="40" src="back.png" style="margin-top:25px" ></a>
   	  <a href="home.jsp" style="margin-top:25px"><img height="30" width="40" src="home.png" style="margin-top:25px"></a>
       </form>
   </div>

@@ -41,5 +41,12 @@
 </div>
 <br>
  <%@ include file = "footer.jsp" %> 
+ <script>
+ 
+  $(function() {
+	  $("#goBackButton").hide();
+  });
+ 
+  </script>
 </body>
 </html>
