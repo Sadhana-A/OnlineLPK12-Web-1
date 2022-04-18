@@ -12,21 +12,20 @@
 <body>
 <div class="container pt-5">
 <div class="row">
-<div class="col-sm-6">
+<div class="col-md-6">
   <h2>Lessons</h2>
   <div class="card" style="width:400px">
   <form action="lessonnumber.jsp">
     <img class="card-img-top" src="lessons.png" alt="lessons" style="width:100%">
     <div class="card-body">
       <p class="card-text">Click below to view lessons</p>
-      <a href="lessonnumber.jsp" class="btn btn-primary">Lessons</a>
+      <a href="lessonNumber.jsp" class="btn btn-primary">Lessons</a>
     </div>
       </form>
   </div>
   </div>
 
-  
-  <div class="col-sm-6">
+  <div class="col-md-6">
   <h2>Progress</h2>
   <div class="card" style="width:400px">
   <form action="progress.jsp">

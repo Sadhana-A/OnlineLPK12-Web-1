@@ -12,7 +12,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <style>
 .table-styled {
-  border-collapse: collapse
+border-collapse: collapse
 }
 </style>
 <meta charset="UTF-8">
@@ -21,6 +21,9 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div id="student-progress-table" style="width:80%;margin:2% 10%;">
+
+
+
 </div>
 <jsp:include page="footer.jsp"/>
 </body>
@@ -29,38 +32,25 @@
 window.onload = function(){
 getApiData();
 console.log("hello");
-
 var response = getApiData();
-
 }
 function goToStudentProgress(id){
-	//window.Storage.setItem('studentid', String(id));
-	localStorage.setItem("studentId",  String(id));
-	window.open("studentProgress.jsp");
-	
+localStorage.setItem("studentId", String(id));
+window.open("studentProgress.jsp");
 }
 function getApiData()
 {
-<%
-String recieve;
-String buffer = "";
-URL url = new URL("http://jsonplaceholder.typicode.com/posts");
-URLConnection urlcon = url.openConnection();
-BufferedReader buffread = new BufferedReader(new InputStreamReader(urlcon.getInputStream()));
-while ((recieve = buffread.readLine()) != null)
-buffer += recieve;
-buffread.close();
-System.out.println(buffer);
-%>
-
+//let userId = sessionStorage.getItem("userId");
+let userId = "16";
 var response = null;
-let apiUrl = "http://jsonplaceholder.typicode.com/posts";
+let apiUrl = "https://onlinelpk12appservice.azurewebsites.net/api/StudentProgress/allStudentDetails/"+userId;
 $.get(apiUrl, function(data, status){
 response = data;
 buildStudentProgressTable(data);
 });
 return response;
 }
+
 function buildStudentProgressTable(response){
 let htmlTable = "<table class='table table-sm table-bordered table-hover'>";
 let headerRow = "<tr style='background-color:#275E9B;color:white'>";
@@ -68,24 +58,18 @@ headerRow += "<th>" + "Student ID" + "</th>";
 headerRow += "<th>" + "Name" + "</th>";
 headerRow += "<th>" + "View Progress" + "</th>";
 htmlTable+= headerRow;
-
-for(let i=0; i<100;i++)
+for(let i=0; i<response.content.length;i++)
 {
 let row = "";
 row += "<tr>";
-row += '<td>' + response[i].userId + '</td>';
-row += '<td>' + response[i].title + '</td>';
-
-row += '<td>' + 
-
-"<button type='button' id='123' class='btn third-category-button' onclick='goToStudentProgress("+response[i].userId+");'>View error records</button>" + '</td>';
-
+row += '<td>' + response.content[i].userId + '</td>';
+row += '<td>' + response.content[i].firstName + ' ' + response.content[i].lastName + '</td>';
+//row += '<td>' + "<button type='button' id='123' class='btn btn-primary' onclick='goToStudentProgress("+response.students[i].userId+");'>View Student Progress</button>" + '</td>';
+row += '<td>' + "<a class='btn btn-primary' href='studentProgress.jsp?userId=" + response.content[i].userId + "' taget='_blank'> View Student Progress </a>" + '</td>';
 row += '</tr>';
 htmlTable += row;
 }
 htmlTable += '</table>';
-
-
 $('#student-progress-table').html(htmlTable);
 }
 function showAlert(){
