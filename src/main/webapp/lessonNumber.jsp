@@ -33,65 +33,64 @@ cursor: default;
 window.onload = function(){
 
 getApiData();
-console.log("hello");
-
 var response = getApiData();
 }
+
+
+
 function getApiData()
 {
-<%
-String recieve;
-String buffer = "";
-URL url = new URL("http://jsonplaceholder.typicode.com/posts");
-URLConnection urlcon = url.openConnection();
-BufferedReader buffread = new BufferedReader(new InputStreamReader(urlcon.getInputStream()));
-while ((recieve = buffread.readLine()) != null)
-buffer += recieve;
-buffread.close();
-System.out.println(buffer);
-%>
-
+//let userId = sessionStorage.getItem("userId");
+let userId = "9";
 var response = null;
-let apiUrl = "http://jsonplaceholder.typicode.com/posts";
+let apiUrl = "https://onlinelpk12appservice.azurewebsites.net/api/StudentProgress/lessons/"+userId;
 $.get(apiUrl, function(data, status){
-response = '{"studentId":"R1234","lessons":[{"id":1,"name":"Lesson 1","status":"Pass"},{"id":2,"name":"Lesson 2","status":"In Progress"},{"id":3,"name":"Lesson 3","status":"Not Started"},{"id":4,"name":"Lesson 4","status":"Not Started"},{"id":5,"name":"Lesson 5","status":"Not Started"},{"id":6,"name":"Lesson 6","status":"Not Started"},{"id":7,"name":"Lesson 7","status":"Not Started"},{"id":8,"name":"Lesson 8","status":"Not Started"}]}';
-buildLessonList(JSON.parse(response));
+response = data
+buildLessonList(response);
 });
 return response;
 }
+
+
+
 function buildLessonList(response){
 let buildList = "<ul>";
-
-for(let i=0; i<response.lessons.length;i++)
+for(let i=0; i<response.content.lessonAndQuizStatus.length;i++)
 {
-
 let k = i;
 if (i !=0)
 {
 k -= 1;
 }
 let li = "";
-let lessonId = response.lessons[i].id;
-let prevLessonStatus = response.lessons[k].status;
+let lessonId = response.content.lessonAndQuizStatus[i].lessonId;
+let prevLessonStatus = response.content.lessonAndQuizStatus[k].quizStatus;
 li += "<li>";
-//li+="<a href='lesson" + response.lessons[i].id + ".jsp'"
-//li+="<a id='lesson" + response.lessons[i].id + "' href='lesson.jsp'"
 if(lessonId == 1)
 {
-li+="<a href='https://prezi.com/ydwozouw3ysg/build-computer-models-for-stem-problems/?utm_campaign=share&utm_medium=copy'>"
+li+="<a href='lesson.jsp?lessonNumber=" + response.content.lessonAndQuizStatus[i].lessonId
+li+="'>"
 }
 else{
-li+="<a href='lesson.jsp?lessonNumber=" + response.lessons[i].id
+li+="<a href='lesson.jsp?lessonNumber=" + response.content.lessonAndQuizStatus[i].lessonId
 if(lessonId != 1 && prevLessonStatus != "Pass")
 {
 li+="' class='disabled'"
 }
 li+="'>"
 }
-li+= "Click here to view ";
-li+= response.lessons[i].name + "!" + "</a>";
-li += " ";
-li += response.lessons[i].status;
+li+= "Click here to view Lesson ";
+li+= response.content.lessonAndQuizStatus[i].lessonId + "!" + "</a>";
+li += "&emsp;";
+li += response.content.lessonAndQuizStatus[i].lessonStatus;
+li += "&emsp;";
+li += "&emsp;";
+li += "&emsp;";
+li += "<a class='btn btn-primary' href='quiz.jsp?lessonNumber=" + response.content.lessonAndQuizStatus[i].lessonId + "'>";
+li+= "Assessment ";
+li+= response.content.lessonAndQuizStatus[i].lessonId + "</a>";
+li += "&emsp;";
+li += response.content.lessonAndQuizStatus[i].quizStatus;
 li += "</li>";
 li += "<br/>";
 buildList += li;

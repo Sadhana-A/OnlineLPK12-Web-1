@@ -1,54 +1,86 @@
-<%@page import="com.lpk12.onlineSystem.lessonStatus" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-table {
-font-family: arial, sans-serif;
-border-collapse: collapse;
-width: 100%;
-}
-
-
-
-td, th {
-border: 1px solid #dddddd;
-text-align: left;
-padding: 8px;
-}
-
-
-
-tr:nth-child(even) {
-background-color: #dddddd;
-}
-</style>
+<title>Student Progress</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
- 
-<h2>Student's Progress Table</h2>
-<p id="student-id"></p>
-<p id="progressID"> </p>
+<jsp:include page="header.jsp"/>
 
-<script>
+
+
+<div id="student-progress" style='width:80%;margin:2% 10%'>
+
+
+
+</div>
+<jsp:include page="footer.jsp"/>
+
+
+
+<script type="text/javascript">
 window.onload = function(){
-	
-	//lessonStatus status=new lessonStatus();
-	//String progress=status.getLessonStatusByStudentID();
-	
-	let progressID='<%= lessonStatus.getLessonStatusByStudentID() %>'; 
-	console.log(progressID);
-	alert(JSON.parse(progressID));
-    document.getElementById('progressID').innerHTML = progressID;
-	let studentId = localStorage.getItem('studentId');
-	document.getElementById('student-id').innerHTML = studentId;
-	}
+getApiData();
+var response = getApiData();
+}
 
+
+
+function getApiData()
+{
+let azureResponse = null;
+//let userId = sessionStorage.getItem("userId");
+let userId = "9";
+var response = null;
+let apiUrl = "https://onlinelpk12appservice.azurewebsites.net/api/StudentProgress/lessons/"+userId;
+$.get(apiUrl, function(data, status){
+response = data
+buildStudentProgressTable(response);
+});
+return response;
+}
+
+
+
+function buildStudentProgressTable(response){
+let div = "<div style='text-align:center'>";
+let content = "<h2>Student Progress</h2>";
+content += "<br>";
+content += "<h5><b>Student Name:</b> "+ response.content.firstName + " " + response.content.lastName + "</h5>";
+content += "<h5><b>Student Id:</b> "+ response.content.studentId + "</h5>";
+div += content;
+div += "</div>";
+div += "<div style='width:80%;margin:2% 10%;'>";
+let htmlTable = "<table class='table table-sm table-bordered table-hover'>";
+let headerRow = "<tr style='background-color:#275E9B;color:white'>";
+headerRow += "<th>" + "Lesson Number" + "</th>";
+headerRow += "<th>" + "Lesson Status" + "</th>";
+headerRow += "<th>" + "Assessment Status" + "</th>";
+htmlTable+= headerRow;
+for(let i=0; i<response.content.lessonAndQuizStatus.length; i++)
+{
+let row = "";
+row += "<tr>";
+row += '<td>' + response.content.lessonAndQuizStatus[i].lessonId + '</td>';
+row += '<td>' + response.content.lessonAndQuizStatus[i].lessonStatus + '</td>';
+row += '<td>' + response.content.lessonAndQuizStatus[i].quizStatus + '</td>';
+row += '</tr>';
+htmlTable += row;
+}
+htmlTable += '</table>';
+div += htmlTable;
+div += "</div>";
+$('#student-progress').html(div);
+}
 </script>
+
+
 
 </body>
 </html>
