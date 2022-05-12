@@ -62,6 +62,8 @@ let headerRow = "<tr style='background-color:#275E9B;color:white'>";
 headerRow += "<th>" + "Lesson Number" + "</th>";
 headerRow += "<th>" + "Lesson Status" + "</th>";
 headerRow += "<th>" + "Assessment Status" + "</th>";
+headerRow += "<th>" + "Program Executed on Online SPARC" + "</th>";
+headerRow += "<th>" + "Answers submitted in Assessment" + "</th>";
 htmlTable+= headerRow;
 for(let i=0; i<response.content.lessonAndQuizStatus.length; i++)
 {
@@ -70,6 +72,8 @@ row += "<tr>";
 row += '<td>' + response.content.lessonAndQuizStatus[i].lessonId + '</td>';
 row += '<td>' + response.content.lessonAndQuizStatus[i].lessonStatus + '</td>';
 row += '<td>' + response.content.lessonAndQuizStatus[i].quizStatus + '</td>';
+row += '<td>' + '<a href="sparc_details_teacher.jsp">Click here to view program</a>' + '</td>';
+row += '<td>' + '<a href="assessment_details_teacher.jsp">Click here to view assessment details</a>' + '</td>';
 row += '</tr>';
 htmlTable += row;
 }

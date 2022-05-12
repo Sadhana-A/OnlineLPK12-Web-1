@@ -54,5 +54,11 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/http-request-3.0.jar/http-request-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/javax.ws.rs.jar (1)/javax.ws.rs.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/jar_files (3)/spring-beans-5.2.21.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/jar_files (3)/spring-core-5.2.21.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/jar_files (3)/spring-jcl-5.2.21.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sadha/Downloads/jar_files (3)/spring-web-5.2.21.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
