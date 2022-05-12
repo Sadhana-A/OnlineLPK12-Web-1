@@ -33,7 +33,7 @@
     <img class="card-img-top" src="progress.jpg" alt="progress" style="width:100%">
     <div class="card-body">
       <p class="card-text">Click below to view progress</p>
-      <a href="progressTeacher.jsp" class="btn btn-primary">Student's progress</a>
+      <a href="teacher.jsp" class="btn btn-primary">Student's progress</a>
     </div>
     </form>
   </div>

@@ -7,8 +7,7 @@
 </head>
 <body>
 <%
-String userName = request.getParameter("userName");
-String passWord = request.getParameter("passWord");
+String username = request.getParameter("username");
 %>
 <div class="container pt-5 my-10 bg-primary text-white" style="width:100%">
 
@@ -23,11 +22,11 @@ String passWord = request.getParameter("passWord");
 
 <div class="col-sm-6" style="text-align:center">
      
-<h2> Welcome to Online LPK12 Course</h2>
+<h2 id="title"> Welcome to Online LPK12 Course</h2>
 </div>
 
 <div class="col-sm-2" style="margin-top:30px">
-<h4><%= userName %> </h4>
+<h4><%= username %> </h4>
 </div>
 <div class="col-sm-1">
 <a href="logout.jsp" style="margin-top:30px" class="btn btn-warning">Logout</a>

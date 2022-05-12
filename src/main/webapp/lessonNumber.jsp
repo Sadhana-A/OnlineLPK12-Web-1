@@ -22,9 +22,6 @@ cursor: default;
 <body>
 <jsp:include page="header.jsp"/>
 <div id="LessonStyle" style="width:95%;margin:3%">
-
-
-
 </div>
 <jsp:include page="footer.jsp"/>
 </body>
@@ -36,22 +33,18 @@ getApiData();
 var response = getApiData();
 }
 
-
-
 function getApiData()
 {
 //let userId = sessionStorage.getItem("userId");
 let userId = "9";
 var response = null;
-let apiUrl = "https://onlinelpk12appservice.azurewebsites.net/api/StudentProgress/lessons/"+userId;
+let apiUrl = "http://wave.ttu.edu/ajax.php";
 $.get(apiUrl, function(data, status){
 response = data
 buildLessonList(response);
 });
 return response;
 }
-
-
 
 function buildLessonList(response){
 let buildList = "<ul>";

@@ -12,11 +12,11 @@
 <body>
 <div class="container pt-5">
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-4">
   <h2>Lessons</h2>
   <div class="card" style="width:400px">
   <form action="lessonnumber.jsp">
-    <img class="card-img-top" src="lessons.png" alt="lessons" style="width:100%">
+    <img class="card-img-top" src="lessons.png" alt="lessons" style="width:95%">
     <div class="card-body">
       <p class="card-text">Click below to view lessons</p>
       <a href="lessonNumber.jsp" class="btn btn-primary">Lessons</a>
@@ -24,8 +24,8 @@
       </form>
   </div>
   </div>
-
-  <div class="col-md-6">
+  
+  <div class="col-md-4">
   <h2>Progress</h2>
   <div class="card" style="width:400px">
   <form action="progress.jsp">
@@ -37,6 +37,22 @@
     </form>
   </div>
 </div>
+
+
+
+
+<div class="col-md-4">
+  <h2>Online SPARC</h2>
+  <div class="onlineSparc" style="width:400px">
+  <form action="sparc.jsp">
+    <img class="card-img-top" src="compilerr.png" alt="onlineSparc" style="width:95%">
+    <div class="card-body">
+      <p class="card-text">Click below to view Online SPARC</p>
+      <a href="sparc.jsp" class="btn btn-primary">Online SPARC</a>
+    </div>
+      </form>
+  </div>
+  </div>
 </div>
 </div>
 <br>
