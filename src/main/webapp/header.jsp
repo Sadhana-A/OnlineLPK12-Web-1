@@ -26,11 +26,16 @@ String username = request.getParameter("username");
 </div>
 
 <div class="col-sm-2" style="margin-top:30px">
-<h4><%= username %> </h4>
+<span id="userName"></span>
 </div>
 <div class="col-sm-1">
-<a href="logout.jsp" style="margin-top:30px" class="btn btn-warning">Logout</a>
+<a href="login.jsp" style="margin-top:30px" class="btn btn-warning">Logout</a>
 </div>
 </div>
 </body>
+<script type="text/javascript">
+
+    document.getElementById("userName").innerHTML=sessionStorage.getItem("username");
+
+</script>
 </html>
