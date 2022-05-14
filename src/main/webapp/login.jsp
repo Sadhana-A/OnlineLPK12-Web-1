@@ -26,7 +26,7 @@
 
             <div class="box">
 
-                <!-- <img class="avatar" src="img/user-avatar.png"> -->
+                
 
                 <h1>
 
@@ -38,15 +38,19 @@ Login Account</h1>
 
 Username</p>
 
-<input type="text" placeholder="Username" id="username" required>
+<input type="text"  name="userName" placeholder="Username" id="username" required>
+
+
 
                     <p>
+
+                    
 
 Password</p>
 
 <input type="password" placeholder="Password" id="password" required>
 
-                    <input type="submit"  value="Login">
+                    <input type="submit"  value="Login" >
 
                     <a href="forgotPassword.jsp">Forgot Password?</a><br>
 
@@ -90,15 +94,15 @@ form.addEventListener('submit',function(e){
 
     //fetch post request
 
-    fetch("https://onlinelpk12appservice.azurewebsites.net/api/user/login",{
+    fetch("http://localhost:8083/api/auth/signin",{
 
         method:'POST',
 
         body: JSON.stringify({
 
-            userName:username,
+            "username":username,
 
-            password:password
+            "password":password
 
         }),
 
@@ -130,27 +134,22 @@ form.addEventListener('submit',function(e){
 
             resp.then((data)=>{
 
-                var object=data.content
+             
 
-                sessionStorage.setItem("userId",object.userId)
+                sessionStorage.setItem("username",data.username)
+
+                sessionStorage.setItem("userId",data.id)
 
                 console.log(sessionStorage.getItem("userId"))
+				
+              	if(data.roles=="ROLE_TEACHER"){
+              		location.href='hometeacher.jsp'
+              	}
+              	else if(data.roles=='ROLE_STUDENT'){
+              		location.href='home.jsp'
+              	}
 
-                var error=data.message
-
-                alert(error)
-
-                if(object.userType=="STUDENT"){
-
-                    location.href='home.jsp'
-
-                }
-
-                else{
-
-                    location.href='hometeacher.jsp'
-
-                }
+               
 
                 
 
@@ -172,39 +171,17 @@ form.addEventListener('submit',function(e){
 
         else{
 
-            if(response.status==400){
+            if(response.status==404){
 
                 
 
                 resp.then((data)=>{
 
-                    var object=data.content
+                    alert(data.message)
 
-                    var error=data.errors
+                    
 
-                    console.log(error)
-
-                    var str=""
-
-                    if(error.length>1){
-
-                        for(let i=0;i<error.length;i++){
-
-                            str+=error[i]+"\n";
-
-                        }
-
-                        alert(str);
-
-                        }
-
-                        else{
-
-                            alert(str+error[0]);
-
-                        }
-
-                    location.href='login.jsp'
+                    
 
                     
 
@@ -212,6 +189,11 @@ form.addEventListener('submit',function(e){
 
                 
 
+            }
+            else if (response.status=401){
+            	resp.then((data)=>{
+            		alert(data.message)
+            	})
             }
 
         }
