@@ -8,7 +8,7 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-       
+       <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Register Account</title>
 
@@ -25,7 +25,7 @@
     <body>
 
     
-
+ <%@ include file = "headerlog.jsp" %>
     
 
         <div class="container">
@@ -42,7 +42,7 @@ Register Account</h1>
 
 <form id="form" method="post">
 
-<label for="role" required>UserRole:</label>
+<%--<label for="role" required>UserRole:</label>
 
 <select id = "role" name="role" >
 
@@ -54,13 +54,13 @@ Register Account</h1>
 
 </select> <br>    
 
-          &nbsp;<p>FirstName</p>
+      &nbsp;<p>FirstName</p>
 
           <input type="text" placeholder="FirstName" id="firstname" required>
 
                    <p>LastName</p>
 
-          <input type="text" placeholder="LastName" id="lastname" required>
+          <input type="text" placeholder="LastName" id="lastname" required>--%>
 
                    <p>UserName</p>
 
@@ -74,9 +74,12 @@ Useremail</p>
 
 <input type="text" placeholder="Useremail" id="email" required>
 
-                   <p>
+               
+                   <p>Role</p>
 
-Password</p>
+        <input type="text" placeholder="userRole" id="role" required>  
+
+    <p>Password</p>
 
 <input type="password" placeholder="Password" id="password" required>
 
@@ -105,20 +108,21 @@ Password</p>
         
 
         e.preventDefault()
-
-        var role=document.getElementById('role').value;
-
-        var firstname=document.getElementById('firstname').value;
-
-        var lastname=document.getElementById('lastname').value;
-
+		
+       
+	var roles=document.getElementById('role').value;
         var username=document.getElementById('username').value;
 
         var email=document.getElementById('email').value;
 
         var password=document.getElementById('password').value;
+      <%--  var role=[];
+        for(var i=0;i<roles.length;i++){
+        	role.push({roles[i]})
+        }--%>
+        
 
-        var isStudent=false;
+     <%--   var isStudent=false;
 
         if(role=="Student"){
 
@@ -126,29 +130,25 @@ Password</p>
 
         }
 
-        console.log(isStudent)
+        console.log(isStudent)--%>
 
         
 
         //fetch post request
 
-        fetch("https://onlinelpk12appservice.azurewebsites.net/api/User/Register",{
+        fetch("http://localhost:8083/api/auth/signup",{
 
             method:'POST',
 
             body: JSON.stringify({
 
-                userName:username,
+                "username":username,
 
-                emailId:email,
+                "email":email,
+				"roles":[roles],
+                "password":password,
 
-                firstName:firstname,
-
-                lastName:lastname,
-
-                password:password,
-
-                isStudent:isStudent    
+                  
 
                 
 
@@ -158,7 +158,7 @@ Password</p>
 
         headers:{
 
-            "Content-Type":"application/json; charset=UTF-8"
+            "Content-Type":"application/json"
 
             
 
@@ -175,10 +175,10 @@ Password</p>
                     resp.then((data)=>{
 
                         
-
+						
                         console.log(data)
 
-                        location.href='login.jsp';
+                       location.href='login.jsp';
 
                         
 
@@ -194,19 +194,15 @@ Password</p>
 
                 resp.then((data)=>{
 
-                        var errors=data.errors
-
-                        var str=""
-
-                        for(let i=0;i<errors.length;i++){
-
-                            str+=errors[i]+ "\n"
-
-                        }
-
-                        alert(str)
-
+                        
+                        alert(data.message)
                         location.href="register.jsp"
+
+                        
+
+                        
+
+                        
 
                         
 
